@@ -3,14 +3,14 @@
 [![Documentation Status](https://readthedocs.org/projects/microservicesdocumentation/badge/?version=latest)](https://readthedocs.org/projects/microservicesdocumentation/?badge=latest)
 
 
-The docs for the MicroServicesProject
+The docs for the MicroServicesProject which is hosted at [http://microservicesdocumentation.readthedocs.org/en/latest/]()
 
 ## Setting Up
 
 1. Start and activate environment
 		
-		Virtualenv env
-		source env/bin/activate
+		virtualenv [location to local envs]
+		source [location to local envs]/bin/activate
 
 1. Run the requirements 
 
