@@ -5,6 +5,10 @@
 
 The docs for the MicroServicesProject
 
+## Requirements
+
+    pip install -r requirements.txt
+
 ## Build the docs
 
     cd docs 
