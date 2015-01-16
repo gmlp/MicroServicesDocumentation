@@ -5,13 +5,22 @@
 
 The docs for the MicroServicesProject
 
-## Requirements
+## Setting Up
 
-    pip install -r requirements.txt
+1. Start and activate environment
+		
+		Virtualenv env
+		source env/bin/activate
 
-## Build the docs
+1. Run the requirements 
 
-    cd docs 
+		pip install -r requirements.txt
+
+## Build the Docs
+
+    cd docs     
     make html
 
+## Auto Build the Docs as you Edit
 
+	sphinx-autobuild source build/html -p3000
