@@ -87,9 +87,20 @@ Run the requirements file using::
 
     touch api/api.py
 
-7. Create some end points - `Django REST Framework <http://www.django-rest-framework.org/>`_.
 
-8. Add the following to settings.py::
+
+
+Add the following setting to allow all urls::
+
+    CORS_ORIGIN_ALLOW_ALL = True
+
+More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
+
+8. Create some end points 
+
+- `Django REST Framework <http://www.django-rest-framework.org/>`_.
+
+9. Add the following to settings.py::
 
     # CUSTOM AUTH
     AUTHENTICATION_BACKENDS = (
@@ -123,32 +134,7 @@ Run the requirements file using::
         'api',
     )
 
-Add 'corsheaders' to your INSTALLED_APPS::
-
-    INSTALLED_APPS = (
-        ...
-        'corsheaders',
-        ...
-    )
-
-You will also need to add a middleware class to listen in on responses::
-
-    MIDDLEWARE_CLASSES = (
-        ...
-        'corsheaders.middleware.CorsMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        ...
-    )
-
->Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
-
-Add the following setting to allow all urls::
-
-    CORS_ORIGIN_ALLOW_ALL = True
-
-More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
-
-8. Add api to the bottom of INSTALLED_APPS::
+8. Update INSTALLED_APPS in settings.py::
 
     INSTALLED_APPS = (
 
@@ -162,15 +148,21 @@ More information on these settings - `Here <https://github.com/ottoyiu/django-co
         # testing etc:
         'django_jenkins',
         'django_extensions',
+        'corsheaders',
     )
 
-9. Add middleware to MIDDLEWARE_CLASSES::
+9. Update MIDDLEWARE_CLASSES in setttings.py::
 
     MIDDLEWARE_CLASSES = (
 
         ## add this:
         'tokenauth.middleware.TokenAuthMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
     )
+
+>Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
+
 
 10. Build the documentation
 
