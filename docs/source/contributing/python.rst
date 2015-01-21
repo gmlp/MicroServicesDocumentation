@@ -22,7 +22,7 @@ Project Setup
     virtualenv env
     source env/bin/activate
 
-2. Create a requirements.txt file with the following
+2. Create a requirements.txt file with the following and run it
 
   ::
 
@@ -51,6 +51,10 @@ Project Setup
 
     ## custom libs:
     -e git://github.com/TangentMicroServices/PythonAuthenticationLib.git#egg=tokenauth
+
+Run the requirements file using::
+
+    pip install -r requirements.txt
 
 3. Create the python project
 
@@ -83,36 +87,9 @@ Project Setup
 
     touch api/api.py
 
-7. Make the api CORS enabled
+7. Create some end points - `Django REST Framework <http://www.django-rest-framework.org/>`_.
 
-Add 'corsheaders' to your INSTALLED_APPS::
-
-    INSTALLED_APPS = (
-        ...
-        'corsheaders',
-        ...
-    )
-
-You will also need to add a middleware class to listen in on responses::
-
-    MIDDLEWARE_CLASSES = (
-        ...
-        'corsheaders.middleware.CorsMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        ...
-    )
-
->Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
-
-Add the following setting to allow all urls::
-
-    CORS_ORIGIN_ALLOW_ALL = True
-
-More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
-
-8. Create some end points - `Django REST Framework <http://www.django-rest-framework.org/>`_.
-
-9. Add Athentication to settings.py::
+8. Add the following to settings.py::
 
     # CUSTOM AUTH
     AUTHENTICATION_BACKENDS = (
@@ -145,6 +122,31 @@ More information on these settings - `Here <https://github.com/ottoyiu/django-co
     PROJECT_APPS = (
         'api',
     )
+
+Add 'corsheaders' to your INSTALLED_APPS::
+
+    INSTALLED_APPS = (
+        ...
+        'corsheaders',
+        ...
+    )
+
+You will also need to add a middleware class to listen in on responses::
+
+    MIDDLEWARE_CLASSES = (
+        ...
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        ...
+    )
+
+>Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
+
+Add the following setting to allow all urls::
+
+    CORS_ORIGIN_ALLOW_ALL = True
+
+More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
 
 8. Add api to the bottom of INSTALLED_APPS::
 
