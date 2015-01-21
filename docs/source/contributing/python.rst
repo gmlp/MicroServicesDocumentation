@@ -88,19 +88,11 @@ Run the requirements file using::
     touch api/api.py
 
 
-
-
-Add the following setting to allow all urls::
-
-    CORS_ORIGIN_ALLOW_ALL = True
-
-More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
-
-8. Create some end points 
+7. Create some end points 
 
 - `Django REST Framework <http://www.django-rest-framework.org/>`_.
 
-9. Add the following to settings.py::
+8. Add the following to settings.py::
 
     # CUSTOM AUTH
     AUTHENTICATION_BACKENDS = (
@@ -134,10 +126,12 @@ More information on these settings - `Here <https://github.com/ottoyiu/django-co
         'api',
     )
 
-8. Update INSTALLED_APPS in settings.py::
+9. Update INSTALLED_APPS in settings.py::
 
     INSTALLED_APPS = (
 
+        ...
+        
         ## 3rd party
         'rest_framework',
 
@@ -151,7 +145,7 @@ More information on these settings - `Here <https://github.com/ottoyiu/django-co
         'corsheaders',
     )
 
-9. Update MIDDLEWARE_CLASSES in setttings.py::
+10. Update MIDDLEWARE_CLASSES in setttings.py::
 
     MIDDLEWARE_CLASSES = (
 
@@ -163,8 +157,11 @@ More information on these settings - `Here <https://github.com/ottoyiu/django-co
 
 >Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
 
+11. Update settings.py with the following setting at the bottom::
 
-10. Build the documentation
+    CORS_ORIGIN_ALLOW_ALL = True
+
+12. Build the documentation
 
   ::
 
@@ -181,9 +178,9 @@ This will create a folder called /docs and the structure should like this this::
       conf.py   
       index.rst
 
-11. Add /docs/build/ to .gitignore file
+13. Add /docs/build/ to .gitignore file
 
-12. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
+14. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
 Authentication
 --------------
