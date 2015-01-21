@@ -87,12 +87,7 @@ Run the requirements file using::
 
     touch api/api.py
 
-
-7. Create some end points 
-
-- `Django REST Framework <http://www.django-rest-framework.org/>`_.
-
-8. Add the following to settings.py::
+7. Add the following to settings.py::
 
     # CUSTOM AUTH
     AUTHENTICATION_BACKENDS = (
@@ -126,12 +121,12 @@ Run the requirements file using::
         'api',
     )
 
-9. Update INSTALLED_APPS in settings.py::
+8. Update INSTALLED_APPS in settings.py::
 
     INSTALLED_APPS = (
 
         ...
-        
+
         ## 3rd party
         'rest_framework',
 
@@ -145,7 +140,7 @@ Run the requirements file using::
         'corsheaders',
     )
 
-10. Update MIDDLEWARE_CLASSES in setttings.py::
+9. Update MIDDLEWARE_CLASSES in setttings.py::
 
     MIDDLEWARE_CLASSES = (
 
@@ -157,9 +152,16 @@ Run the requirements file using::
 
 >Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
 
-11. Update settings.py with the following setting at the bottom::
+10. Update settings.py with the following setting at the bottom
 
-    CORS_ORIGIN_ALLOW_ALL = True
+    ::
+
+        CORS_ORIGIN_ALLOW_ALL = True
+
+11. Create some end points 
+
+- `Django REST Framework <http://www.django-rest-framework.org/>`_.
+
 
 12. Build the documentation
 
@@ -179,6 +181,7 @@ This will create a folder called /docs and the structure should like this this::
       index.rst
 
 13. Add /docs/build/ to .gitignore file
+
 
 14. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
