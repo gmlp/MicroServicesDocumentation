@@ -23,4 +23,5 @@ The docs for the MicroServicesProject which is hosted at [http://microservicesdo
 
 ## Auto Build the Docs as you Edit
 
+	cd docs
 	sphinx-autobuild source build/html -p3000

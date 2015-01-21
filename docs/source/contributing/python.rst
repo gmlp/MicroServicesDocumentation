@@ -47,6 +47,7 @@ Project Setup
     coverage
     django-jenkins
     django-extensions
+    django-cors-headers
 
     ## custom libs:
     -e git://github.com/TangentMicroServices/PythonAuthenticationLib.git#egg=tokenauth
@@ -82,9 +83,36 @@ Project Setup
 
     touch api/api.py
 
-7. Create some end points - `Django REST Framework <http://www.django-rest-framework.org/>`_.
+7. Make the api CORS enabled
 
-8. Add Athentication to settings.py::
+Add 'corsheaders' to your INSTALLED_APPS::
+
+    INSTALLED_APPS = (
+        ...
+        'corsheaders',
+        ...
+    )
+
+You will also need to add a middleware class to listen in on responses::
+
+    MIDDLEWARE_CLASSES = (
+        ...
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        ...
+    )
+
+>Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
+
+Add the following setting to allow all urls::
+
+    CORS_ORIGIN_ALLOW_ALL = True
+
+More information on these settings - `Here <https://github.com/ottoyiu/django-cors-headers/>`_.
+
+8. Create some end points - `Django REST Framework <http://www.django-rest-framework.org/>`_.
+
+9. Add Athentication to settings.py::
 
     # CUSTOM AUTH
     AUTHENTICATION_BACKENDS = (
