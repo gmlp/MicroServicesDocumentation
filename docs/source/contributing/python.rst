@@ -16,6 +16,26 @@ Authentication
 Documenting
 ------------
 
+Testing
+------------
+
+Unit Tests
+___________
+
+Uint tests can be run with::
+
+    python manage.py test
+
+Integration Tests
+__________________
+
+Integration tests should be stored in files matching the pattern `*_ITCase.py`. They can be run with: 
+
+    python manage.py test --pattern="*_ITCase.py"
+
+
+
+
 Continious Integration with Jenkins
 ----------------------------------------
 
