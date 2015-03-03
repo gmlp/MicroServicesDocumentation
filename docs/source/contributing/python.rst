@@ -185,6 +185,47 @@ This will create a folder called /docs and the structure should like this this::
 
 14. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
+
+Writing some Code
+--------------------
+
+The following code is for the hours service using entry. Rename accordingly.
+
+1. In models.py add the following::
+
+    from django.contrib.auth.models import User
+    ...
+    
+    class Entry(models.Model):
+
+        user = models.ForeignKey(User)
+        title = models.CharField(max_length=200)
+
+2. In api.py add the following::
+
+    from rest_framework import viewsets, routers, serializers
+    from rest_framework.decorators import detail_route
+    from rest_framework.response import Response
+
+    ...
+    class EntryViewSet(viewsets.ModelViewSet):
+        model = Entry
+        serializer_class=EntrySerializer
+
+    hours_router = routers.DefaultRouter()
+    hours_router.register('entry', EntryViewSet)
+
+3. In urls.py add the following::
+
+    from api.api import hours_router
+    ...
+
+    urlpatterns = patterns('',
+        url(r'^', include(hours_router.urls)), 
+    )
+
+4. python manage.py runserver
+
 Authentication
 --------------
 

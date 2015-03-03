@@ -3,7 +3,7 @@
 [![Documentation Status](https://readthedocs.org/projects/microservicesdocumentation/badge/?version=latest)](https://readthedocs.org/projects/microservicesdocumentation/?badge=latest)
 
 
-The docs for the MicroServicesProject which is hosted at [http://microservicesdocumentation.readthedocs.org/en/latest/]()
+The docs for the MicroServicesProject which is hosted at [http://microservicesdocumentation.readthedocs.org/en/latest/](http://microservicesdocumentation.readthedocs.org/en/latest/)
 
 ## Setting Up
 
