@@ -101,6 +101,8 @@ Run the requirements file using::
             'rest_framework.permissions.IsAuthenticated',
         ),
         'DEFAULT_AUTHENTICATION_CLASSES': (
+            ## we need this for the browsable API to work
+            'rest_framework.authentication.SessionAuthentication',
             'tokenauth.authbackends.RESTTokenAuthBackend',        
         )
     }
@@ -129,6 +131,7 @@ Run the requirements file using::
 
         ## 3rd party
         'rest_framework',
+        'rest_framework_swagger',
 
         ## custom
         'tokenauth',
@@ -161,6 +164,12 @@ Run the requirements file using::
 11. Create some end points 
 
 - `Django REST Framework <http://www.django-rest-framework.org/>`_.
+
+**Note:** to include a Swagger API explorer for your API. Add::
+
+    url(r'^api-explorer/', include('rest_framework_swagger.urls')), 
+
+to `urls.py`. for more info on using Swagger with Django Rest Framework, see: 
 
 
 12. Build the documentation
