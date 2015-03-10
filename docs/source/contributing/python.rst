@@ -28,6 +28,7 @@ Typical Project Layout
     README.md
     requirements.txt
 
+
 Toolset
 --------
 
@@ -86,10 +87,11 @@ Run the requirements file using::
 
     django-admin.py startproject projectservice .
 
-  NOTE:
+.. note::
 
-  * projectservice all lowercase 
-  * note that . at the end: so it creates it in the current directory
+    * projectservice all lowercase 
+    * note that . at the end: so it creates it in the current directory
+  
 
 4. Check that your structure is as follows::
 
@@ -177,7 +179,9 @@ Run the requirements file using::
         'django.middleware.common.CommonMiddleware',
     )
 
->Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
+.. note::
+
+    Note that CorsMiddleware needs to come before Django's CommonMiddleware if you are using Django's USE_ETAGS = True setting, otherwise the CORS headers will be lost from the 304 not-modified responses, causing errors in some browsers.
 
 10. Update settings.py with the following setting at the bottom
 
@@ -193,7 +197,9 @@ Build the Database
 
     python manage.py syncdb
 
-> Make the username admin and password a by default
+.. note::
+    
+    Make the username admin and password a by default
 
 2. Perform any migrations if necessary::
 
@@ -219,13 +225,17 @@ Writing some Code
 
 Create some end points using - `Django REST Framework <http://www.django-rest-framework.org/>`_.
 
-**Note:** to include a Swagger API explorer for your API. Add::
+.. note::
 
-    url(r'^api-explorer/', include('rest_framework_swagger.urls')), 
+    To include a Swagger API explorer for your API. Add::
 
-to `urls.py`. for more info on using Swagger with Django Rest Framework, see: 
+        url(r'^api-explorer/', include('rest_framework_swagger.urls')), 
 
-The following code is for the hours service using entry. Rename accordingly.
+    to `urls.py`. for more info on using Swagger with Django Rest Framework, see: 
+
+.. warning::
+
+    The following code is for the hours service using entry. Rename accordingly.
 
 1. In models.py add the following::
 
@@ -293,8 +303,9 @@ This will create a folder called /docs and the structure should like this this::
 
 4. Update the readme file with instructions on how to setup the project
 
+.. warning::
 
-The following code is for the hours service. Rename accordingly.
+    The following code is for the hours service. Rename accordingly.
 ::
 
     # HoursService
@@ -341,11 +352,9 @@ Uint tests can be run with::
 Integration Tests
 __________________
 
-Integration tests should be stored in files matching the pattern `*_ITCase.py`. They can be run with: 
+Integration tests should be stored in files matching the pattern `*_ITCase.py`. They can be run with:: 
 
     python manage.py test --pattern="*_ITCase.py"
-
-
 
 
 Continious Integration with Jenkins
