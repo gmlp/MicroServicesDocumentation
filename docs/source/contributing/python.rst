@@ -4,6 +4,30 @@ Writing a MicroService with Python (Django)
 Typical Project Layout
 -----------------------
 
+::
+
+    api
+        migrations
+            __init__.py
+        __init__.py
+        admin.py
+        api.py
+        models.py
+        tests.py
+        views.py
+    projectservice
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    data
+        initial.json
+    .gitignore
+    db.sqlite3
+    manage.py
+    README.md
+    requirements.txt
+
 Toolset
 --------
 
@@ -161,42 +185,45 @@ Run the requirements file using::
 
         CORS_ORIGIN_ALLOW_ALL = True
 
-11. Create some end points 
 
-- `Django REST Framework <http://www.django-rest-framework.org/>`_.
+Build the Database
+------------------
+
+1. Sync the database::
+
+    python manage.py syncdb
+
+> Make the username admin and password a by default
+
+2. Perform any migrations if necessary::
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+Initial Data
+------------
+
+1. Login to the admin panel and create some test data
+
+2. Dump the data::
+
+    python manage.py dumpdata > data/initial.json
+
+3. Run the data to test that it works::
+
+    python manage.py loaddata data/initial.json
+
+
+Writing some Code
+--------------------
+
+Create some end points using - `Django REST Framework <http://www.django-rest-framework.org/>`_.
 
 **Note:** to include a Swagger API explorer for your API. Add::
 
     url(r'^api-explorer/', include('rest_framework_swagger.urls')), 
 
 to `urls.py`. for more info on using Swagger with Django Rest Framework, see: 
-
-
-12. Build the documentation
-
-  ::
-
-    sphinx-quickstart
-
-This will create a folder called /docs and the structure should like this this::
-
-    Makefile  
-    make.bat
-    build/    
-    source/
-      _static   
-      _templates  
-      conf.py   
-      index.rst
-
-13. Add /docs/build/ to .gitignore file
-
-
-14. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
-
-
-Writing some Code
---------------------
 
 The following code is for the hours service using entry. Rename accordingly.
 
@@ -235,11 +262,35 @@ The following code is for the hours service using entry. Rename accordingly.
 
 4. python manage.py runserver
 
+
 Authentication
 --------------
 
 Documenting
 ------------
+
+1. Build the documentation
+
+  ::
+
+    sphinx-quickstart
+
+This will create a folder called /docs and the structure should like this this::
+
+    Makefile  
+    make.bat
+    build/    
+    source/
+      _static   
+      _templates  
+      conf.py   
+      index.rst
+
+2. Add /docs/build/ to .gitignore file
+
+
+3. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
+
 
 Testing
 ------------
