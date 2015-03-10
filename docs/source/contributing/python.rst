@@ -269,7 +269,7 @@ Authentication
 Documenting
 ------------
 
-1. Build the documentation
+1. Build the documentation in Sphinx
 
   ::
 
@@ -290,6 +290,42 @@ This will create a folder called /docs and the structure should like this this::
 
 
 3. Write your own documentation as you go - `RST Docs <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
+
+4. Update the readme file with instructions on how to setup the project
+
+
+The following code is for the hours service. Rename accordingly.
+::
+
+    # HoursService
+
+    [![Build Status](http://jenkins.tangentme.com/buildStatus/icon?job=Build HoursService)](http://jenkins.tangentme.com/view/MicroServices/job/Build%20HoursService/)
+
+    A Service for time tracking
+
+    ## Setting Up
+
+    1. Start and activate environment
+        
+            Virtualenv env
+            source env/bin/activate
+
+    1. Run the requirements
+
+            pip install -r requirements.txt
+        
+    1. Install the database
+
+            python manage.py syncdb
+            
+    1. Run the initial data (if required - this is test data only)
+
+            python manage.py loaddata data/initial.json
+
+    1. Run the tests to ensure the project is up and running correctly
+
+            python manage.py test
+
 
 
 Testing
